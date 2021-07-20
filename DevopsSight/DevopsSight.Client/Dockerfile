@@ -7,7 +7,6 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
 COPY ["DevopsSight.Client.csproj", "DevopsSight.Client/"]
-#COPY ["DevopsSight.Client/DevopsSight.Client.csproj", "DevopsSight.Client/"]
 RUN dotnet restore "DevopsSight.Client/DevopsSight.Client.csproj"
 COPY . .
 WORKDIR "/src/DevopsSight.Client"
