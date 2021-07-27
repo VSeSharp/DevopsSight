@@ -1,0 +1,31 @@
+version: '3.4'
+
+services:
+  devopssight.api:
+    container_name: devopssightapi
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "DatabaseSettings:ConnectionString=mongodb://devopssightdb:27017"
+    depends_on:
+      - devopssight.db
+    ports:
+      - "8000:80"
+
+  devopssight.client:
+    container_name: devopssightclient
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "DevopsSightAPIUrl=http://devopssightapi"
+    depends_on:
+      - devopssight.db
+      - devopssight.api
+    ports:
+      - "8001:80"
+
+  devopssight.db:
+    container_name: devopssightdb
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - ${WEBAPP_STORAGE_HOME}/site:/data/db

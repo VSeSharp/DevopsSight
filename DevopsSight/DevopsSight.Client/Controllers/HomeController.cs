@@ -1,23 +1,32 @@
-﻿using DevopsSight.Client.Data;
-using DevopsSight.Client.Models;
+﻿using DevopsSight.Client.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace DevopsSight.Client.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly HttpClient _httpClient;
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IHttpClientFactory httpClientFactory, ILogger<HomeController> logger)
         {
+            _httpClient = httpClientFactory.CreateClient("DevopsSightAPIClient");
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View(ProductContext.Products);
+            var response = await _httpClient.GetAsync("/product");
+            var contents = await response.Content.ReadAsStringAsync();
+            var productList = JsonConvert.DeserializeObject<IEnumerable<Product>>(contents);
+
+            return View(productList);
         }
 
         public IActionResult Privacy()

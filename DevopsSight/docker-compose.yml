@@ -1,0 +1,18 @@
+version: '3.4'
+
+services:
+  devopssight.api:
+    image: ${DOCKER_REGISTRY-}devopssightapi
+    build:
+      context: .
+      dockerfile: DevopsSight.API/Dockerfile
+
+  devopssight.client:
+    image: ${DOCKER_REGISTRY-}devopssightclient
+    build:
+      context: .
+      dockerfile: DevopsSight.Client/Dockerfile
+
+  devopssight.db:
+    image: mongo
+
