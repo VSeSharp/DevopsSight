@@ -20,7 +20,7 @@ variables:
   dockerRegistryServiceConnection: 'd4af2a66-cdfb-4537-99db-da807ada51f0'
   imageRepository: 'devopssightclient'
   containerRegistry: 'devopssightacr.azurecr.io'
-  dockerfilePath: '**/Dockerfile'
+  dockerfilePath: 'DevopsSight/DevopsSight.Client/Dockerfile'
   tag: '$(Build.BuildId)'
   imagePullSecret: 'devopssightacr69172ec4-auth'
 
