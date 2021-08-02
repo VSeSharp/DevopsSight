@@ -35,7 +35,7 @@ namespace DevopsSight.API.Data
                 {
                     Name = "IPhone X",
                     Description = "This phone is the company's biggest change to its flagship smartphone in years. It includes a borderless.",
-                    ImageFile = "VSeSharp.png",
+                    ImageFile = "VSeSharp.jpg",
                     Price = 950.00M,
                     Category = "Smart Phone"
                 },
