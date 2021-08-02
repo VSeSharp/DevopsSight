@@ -15,4 +15,3 @@ services:
 
   devopssight.db:
     image: mongo
-
