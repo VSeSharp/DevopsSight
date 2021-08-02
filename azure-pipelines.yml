@@ -11,7 +11,7 @@ resources:
 variables:
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: 'b8942596-5086-4470-88f9-c9057efc4282'
-  imageRepository: 'vsesharpdevopssight'
+  imageRepository: 'devopssightapi'
   containerRegistry: 'devopssightacr.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/DevopsSight/DevopsSight.API/Dockerfile'
   tag: '$(Build.BuildId)'
